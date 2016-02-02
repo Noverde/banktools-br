@@ -1,0 +1,1 @@
+require 'banktools-br/version'
