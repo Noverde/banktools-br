@@ -5,4 +5,5 @@ require 'banktools-br/agency'
 
 module BanktoolsBR
   class UnsupportedBank < StandardError ; end
+  class DigitWeightsInvalid < StandardError ; end
 end

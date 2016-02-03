@@ -34,4 +34,18 @@ describe BanktoolsBR::Banks::Utilities do
       expect(FakeBank.new.extract_number_without_digit('4456', 4)).to eq('445')
     end
   end
+
+  describe '#digit_calculator' do
+    it 'returns digit with mod 10' do
+      expect(FakeBank.new.digit_calculator('093258054', [2, 1, 2, 1, 2, 1, 2, 1, 2], 10)).to eq(1)
+      expect(FakeBank.new.digit_calculator('151451056', [2, 1, 2, 1, 2, 1, 2, 1, 2], 10)).to eq(7)
+      expect(FakeBank.new.digit_calculator('782960085', [2, 1, 2, 1, 2, 1, 2, 1, 2], 10)).to eq(2)
+    end
+
+    it 'returns digit with mod 11' do
+      expect(FakeBank.new.digit_calculator('00210169', [9, 8, 7, 6, 5, 4, 3, 2], 11, false)).to eq(6)
+      expect(FakeBank.new.digit_calculator('01166281', [9, 8, 7, 6, 5, 4, 3, 2], 11, false)).to eq(6)
+      expect(FakeBank.new.digit_calculator('00178780', [9, 8, 7, 6, 5, 4, 3, 2], 11, false)).to eq(2)
+    end
+  end
 end

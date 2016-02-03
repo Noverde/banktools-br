@@ -31,22 +31,11 @@ module BanktoolsBR
         end
 
         def correct_verification_digit
-          final_value = 0
+          digit = digit_calculator(full_account_number, [2, 1, 2, 1, 2, 1, 2, 1, 2], 10)
 
-          full_account_number.split('').each_with_index do |char, i|
-            i = i + 1
+          return '0' if digit == 10
 
-            if i.odd?
-              result = (char.to_i * 2)
-
-              final_value += ((result > 9) ? (result.to_s[0].to_i + result.to_s[1].to_i) : result)
-            else
-              final_value += char.to_i
-            end
-          end
-
-          mod = (final_value % 10)
-          (mod == 0) ? '0' : (10 - mod).to_s
+          digit.to_s
         end
       end
     end
