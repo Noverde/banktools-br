@@ -2,6 +2,19 @@
 
 This gem to normalize, validate and prettify brazilian bank account and agencies according to the bank.
 
+## Support
+
+This gem supports the follow bank account validations:
+
+* Banrisul
+* BB
+* Bradesco
+* Caixa Economica
+* Citybank
+* HSBC
+* Itau
+* Santander
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -20,6 +33,22 @@ Or install it yourself as:
 
 ## Usage
 
+```ruby
+agency = BanktoolsBR::Agency.new('001', '1584')
+agency.valid? # true
+
+account = BanktoolsBR::Account.new('001', '1584', '002.101.69-6')
+account.valid? # true
+account.to_s # 00210169-6
+```
+
+## TODO
+
+Implement digit validation for the follow bank agencies:
+
+* BB
+* Banrisul
+* Bradesco
 
 ## Development
 
