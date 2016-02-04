@@ -17,11 +17,12 @@ describe BanktoolsBR::Banks::Utilities do
 
   describe '#extract_digit' do
     it 'returns the digit from account number' do
-      expect(FakeBank.new.extract_digit('02939-1', 6)).to eq('1')
-      expect(FakeBank.new.extract_digit('123452', 6)).to eq('2')
-      expect(FakeBank.new.extract_digit('0293-1', 5)).to eq('1')
-      expect(FakeBank.new.extract_digit('9877-5', 5)).to eq('5')
-      expect(FakeBank.new.extract_digit('4456', 4)).to eq('6')
+      expect(FakeBank.new.extract_digit('02939-1')).to eq('1')
+      expect(FakeBank.new.extract_digit('123452')).to eq('2')
+      expect(FakeBank.new.extract_digit('0293-1')).to eq('1')
+      expect(FakeBank.new.extract_digit('9877-5')).to eq('5')
+      expect(FakeBank.new.extract_digit('4456')).to eq('6')
+      expect(FakeBank.new.extract_digit('9877-x')).to eq('X')
     end
   end
 

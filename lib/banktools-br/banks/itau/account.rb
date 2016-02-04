@@ -12,7 +12,7 @@ module BanktoolsBR
         end
 
         def verification_digit
-          extract_digit(@bank_account, BANK_ACCOUNT_LENGTH)
+          extract_digit(@bank_account)
         end
 
         def valid?
