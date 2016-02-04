@@ -11,6 +11,8 @@ module BanktoolsBR
         BanktoolsBR::Banks::BB::Agency.new(@bank_agency).valid?
       when '033'
         BanktoolsBR::Banks::Santander::Agency.new(@bank_agency).valid?
+      when '041'
+        BanktoolsBR::Banks::Banrisul::Agency.new(@bank_agency).valid?
       when '104'
         BanktoolsBR::Banks::CaixaEconomica::Agency.new(@bank_agency).valid?
       when '341'

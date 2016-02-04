@@ -34,6 +34,13 @@ describe BanktoolsBR::Account do
       BanktoolsBR::Account.new('033', agency, account).valid?
     end
 
+    it 'calls banrisul validation account if banrisul bank code' do
+      expect(BanktoolsBR::Banks::Banrisul::Account).to receive(:new).with(agency, account).and_return(bank_account)
+      expect(bank_account).to receive(:valid?)
+
+      BanktoolsBR::Account.new('041', agency, account).valid?
+    end
+
     it 'raises an exception if bank code does not match with any bank code supported' do
       expect { BanktoolsBR::Account.new('999', '0345', '013244-5').valid? }.to raise_error(BanktoolsBR::UnsupportedBank)
     end
