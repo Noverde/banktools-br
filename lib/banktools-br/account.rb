@@ -1,11 +1,21 @@
 module BanktoolsBR
   class Account
+    # Construct Account object
+    #
+    # @param [String] bank code according to BC
+    # @param [String] bank agency number
+    # @param [String] bank account number + verification digit
+    # @return the object
     def initialize(bank_code, bank_agency, bank_account)
       @bank_code = bank_code
       @bank_agency = bank_agency
       @bank_account = bank_account
     end
 
+    # Validates account verification digit based on bank code.
+    #
+    # @return [true, false]
+    # @raise [BanktoolsBR::UnsupportedBank] if bank code is not supported.
     def valid?
       case @bank_code
       when '001'

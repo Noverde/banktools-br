@@ -1,10 +1,19 @@
 module BanktoolsBR
   class Agency
+    # Construct Agency object
+    #
+    # @param [String] bank code according to BC
+    # @param [String] bank agency number
+    # @return the object
     def initialize(bank_code, bank_agency)
       @bank_code = bank_code
       @bank_agency = bank_agency
     end
 
+    # Validates agency based on bank code.
+    #
+    # @return [true, false]
+    # @raise [BanktoolsBR::UnsupportedBank] if bank code is not supported.
     def valid?
       case @bank_code
       when '001'
