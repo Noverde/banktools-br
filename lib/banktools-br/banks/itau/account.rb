@@ -31,7 +31,8 @@ module BanktoolsBR
         end
 
         def correct_verification_digit
-          digit = digit_calculator(full_account_number, [2, 1, 2, 1, 2, 1, 2, 1, 2], 10)
+          sum_digit = digit_calculator_sum(full_account_number, [2, 1, 2, 1, 2, 1, 2, 1, 2])
+          digit = digit_calculator_mod(sum_digit, 10)
 
           return '0' if digit == 10
 

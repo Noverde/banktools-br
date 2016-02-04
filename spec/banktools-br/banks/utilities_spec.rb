@@ -36,17 +36,21 @@ describe BanktoolsBR::Banks::Utilities do
     end
   end
 
-  describe '#digit_calculator' do
-    it 'returns digit with mod 10' do
-      expect(FakeBank.new.digit_calculator('093258054', [2, 1, 2, 1, 2, 1, 2, 1, 2], 10)).to eq(1)
-      expect(FakeBank.new.digit_calculator('151451056', [2, 1, 2, 1, 2, 1, 2, 1, 2], 10)).to eq(7)
-      expect(FakeBank.new.digit_calculator('782960085', [2, 1, 2, 1, 2, 1, 2, 1, 2], 10)).to eq(2)
+  describe '#digit_calculator_sum' do
+    it 'returns digit sum' do
+      expect(FakeBank.new.digit_calculator_sum('093258054', [2, 1, 2, 1, 2, 1, 2, 1, 2])).to eq(39)
+      expect(FakeBank.new.digit_calculator_sum('151451056', [2, 1, 2, 1, 2, 1, 2, 1, 2])).to eq(23)
+      expect(FakeBank.new.digit_calculator_sum('782960085', [2, 1, 2, 1, 2, 1, 2, 1, 2])).to eq(38)
+      expect(FakeBank.new.digit_calculator_sum('782960085', [2, 1, 2, 1, 2, 1, 2, 1, 2], false)).to eq(65)
     end
+  end
 
-    it 'returns digit with mod 11' do
-      expect(FakeBank.new.digit_calculator('00210169', [9, 8, 7, 6, 5, 4, 3, 2], 11, false)).to eq(6)
-      expect(FakeBank.new.digit_calculator('01166281', [9, 8, 7, 6, 5, 4, 3, 2], 11, false)).to eq(6)
-      expect(FakeBank.new.digit_calculator('00178780', [9, 8, 7, 6, 5, 4, 3, 2], 11, false)).to eq(2)
+  describe '#digit_calculator_mod' do
+    it 'returns digit according to mod calculation' do
+      expect(FakeBank.new.digit_calculator_mod(39, 10)).to eq(1)
+      expect(FakeBank.new.digit_calculator_mod(23, 10)).to eq(7)
+      expect(FakeBank.new.digit_calculator_mod(38, 11)).to eq(6)
+      expect(FakeBank.new.digit_calculator_mod(65, 11)).to eq(1)
     end
   end
 end

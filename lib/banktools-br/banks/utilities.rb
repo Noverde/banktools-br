@@ -13,7 +13,7 @@ module BanktoolsBR
         sanitize_numbers(full_number).slice(0, maximum_size - 1)
       end
 
-      def digit_calculator(string_number, weights, mod, sum_digits_when_greater_than_9 = true)
+      def digit_calculator_sum(string_number, weights, sum_digits_when_greater_than_9 = true)
         raise BanktoolsBR::DigitWeightsInvalid, 'String number size is different from weight values size' if string_number.size != weights.size
 
         final_value = 0
@@ -28,7 +28,11 @@ module BanktoolsBR
           final_value += result
         end
 
-        (mod - (final_value % mod))
+        final_value
+      end
+
+      def digit_calculator_mod(sum, mod)
+        (mod - (sum % mod))
       end
     end
   end
