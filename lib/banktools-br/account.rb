@@ -10,6 +10,8 @@ module BanktoolsBR
       case @bank_code
       when '001'
         BanktoolsBR::Banks::BB::Account.new(@bank_agency, @bank_account).valid?
+      when '033'
+        BanktoolsBR::Banks::Santander::Account.new(@bank_agency, @bank_account).valid?
       when '104'
         BanktoolsBR::Banks::CaixaEconomica::Account.new(@bank_agency, @bank_account).valid?
       when '341'
