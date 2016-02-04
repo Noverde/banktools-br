@@ -8,6 +8,8 @@ module BanktoolsBR
 
     def valid?
       case @bank_code
+      when '001'
+        BanktoolsBR::Banks::BB::Account.new(@bank_agency, @bank_account).valid?
       when '341'
         BanktoolsBR::Banks::Itau::Account.new(@bank_agency, @bank_account).valid?
       else
