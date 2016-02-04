@@ -18,7 +18,7 @@ module BanktoolsBR
       # Prettify account number, remove spaces, invalid numbers and fills with left zeros according to bank account length.
       #
       # @return [String] account number with digit
-      def to_s
+      def normalize
         account_number = sanitize_numbers(bank_account).rjust(bank_account_length, '0')
 
         [extract_number_without_digit(account_number, bank_account_length), extract_digit(bank_account)].join('-')

@@ -9,11 +9,11 @@ class FakeAccount < BanktoolsBR::Banks::Account
 end
 
 describe FakeAccount do
-  describe '#to_s' do
+  describe '#normalize' do
     it 'returns account number with full number and left zeros' do
-      expect(described_class.new('2644', '167.1144-6').to_s).to eq('1671144-6')
-      expect(described_class.new('1222', '194.5200-P').to_s).to eq('1945200-P')
-      expect(described_class.new('9974', '04401093').to_s).to eq('0440109-3')
+      expect(described_class.new('2644', '167.1144-6').normalize).to eq('1671144-6')
+      expect(described_class.new('1222', '194.5200-P').normalize).to eq('1945200-P')
+      expect(described_class.new('9974', '04401093').normalize).to eq('0440109-3')
     end
   end
 
