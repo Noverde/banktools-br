@@ -20,6 +20,13 @@ describe BanktoolsBR::Account do
       BanktoolsBR::Account.new('001', agency, account).valid?
     end
 
+    it 'calls caixa economica validation account if caixa economica bank code' do
+      expect(BanktoolsBR::Banks::CaixaEconomica::Account).to receive(:new).with(agency, account).and_return(bank_account)
+      expect(bank_account).to receive(:valid?)
+
+      BanktoolsBR::Account.new('104', agency, account).valid?
+    end
+
     it 'raises an exception if bank code does not match with any bank code supported' do
       expect { BanktoolsBR::Account.new('999', '0345', '013244-5').valid? }.to raise_error(BanktoolsBR::UnsupportedBank)
     end
