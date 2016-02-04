@@ -35,22 +35,4 @@ describe BanktoolsBR::Banks::Utilities do
       expect(FakeBank.new.extract_number_without_digit('4456', 4)).to eq('445')
     end
   end
-
-  describe '#digit_calculator_sum' do
-    it 'returns digit sum' do
-      expect(FakeBank.new.digit_calculator_sum('093258054', [2, 1, 2, 1, 2, 1, 2, 1, 2])).to eq(39)
-      expect(FakeBank.new.digit_calculator_sum('151451056', [2, 1, 2, 1, 2, 1, 2, 1, 2])).to eq(23)
-      expect(FakeBank.new.digit_calculator_sum('782960085', [2, 1, 2, 1, 2, 1, 2, 1, 2])).to eq(38)
-      expect(FakeBank.new.digit_calculator_sum('782960085', [2, 1, 2, 1, 2, 1, 2, 1, 2], false)).to eq(65)
-    end
-  end
-
-  describe '#digit_calculator_mod' do
-    it 'returns digit according to mod calculation' do
-      expect(FakeBank.new.digit_calculator_mod(39, 10)).to eq(1)
-      expect(FakeBank.new.digit_calculator_mod(23, 10)).to eq(7)
-      expect(FakeBank.new.digit_calculator_mod(38, 11)).to eq(6)
-      expect(FakeBank.new.digit_calculator_mod(65, 11)).to eq(1)
-    end
-  end
 end

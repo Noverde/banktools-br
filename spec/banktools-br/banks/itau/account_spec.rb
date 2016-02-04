@@ -1,14 +1,6 @@
 require 'spec_helper'
 
 describe BanktoolsBR::Banks::Itau::Account do
-  describe '#verification_digit' do
-    it 'returns extracted verification digit from account number' do
-      expect(described_class.new('1517', '664585').verification_digit).to eq('5')
-      expect(described_class.new('0776', '05412-4').verification_digit).to eq('4')
-      expect(described_class.new('7210', '048133').verification_digit).to eq('3')
-    end
-  end
-
   describe '#valid?' do
     context 'when account length is valid' do
       it 'returns true if verification digit is valid' do

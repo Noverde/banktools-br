@@ -1,14 +1,6 @@
 require 'spec_helper'
 
 describe BanktoolsBR::Banks::Bradesco::Account do
-  describe '#verification_digit' do
-    it 'returns extracted verification digit from account number' do
-      expect(described_class.new('3589', '1671144-6').verification_digit).to eq('6')
-      expect(described_class.new('6695', '1945200-P').verification_digit).to eq('P')
-      expect(described_class.new('3295', '04401093').verification_digit).to eq('3')
-    end
-  end
-
   describe '#valid?' do
     context 'when account length is valid' do
       it 'returns true if verification digit is valid' do

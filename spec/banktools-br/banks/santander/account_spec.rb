@@ -1,14 +1,6 @@
 require 'spec_helper'
 
 describe BanktoolsBR::Banks::Santander::Account do
-  describe '#verification_digit' do
-    it 'returns extracted verification digit from account number' do
-      expect(described_class.new('0189', '01017417-9').verification_digit).to eq('9')
-      expect(described_class.new('0654', '02098733-1').verification_digit).to eq('1')
-      expect(described_class.new('9974', '034221231').verification_digit).to eq('1')
-    end
-  end
-
   describe '#valid?' do
     context 'when account length is valid' do
       it 'returns true if verification digit is valid' do

@@ -1,14 +1,6 @@
 require 'spec_helper'
 
 describe BanktoolsBR::Banks::Banrisul::Account do
-  describe '#verification_digit' do
-    it 'returns extracted verification digit from account number' do
-      expect(described_class.new('2644', '35.850767.0-6').verification_digit).to eq('6')
-      expect(described_class.new('1222', '32.567215.1-8').verification_digit).to eq('8')
-      expect(described_class.new('9974', '1231412320').verification_digit).to eq('0')
-    end
-  end
-
   describe '#valid?' do
     context 'when account length is valid' do
       it 'returns true if verification digit is valid' do

@@ -1,14 +1,6 @@
 require 'spec_helper'
 
 describe BanktoolsBR::Banks::CaixaEconomica::Account do
-  describe '#verification_digit' do
-    it 'returns extracted verification digit from account number' do
-      expect(described_class.new('2004', '00100000448-6').verification_digit).to eq('6')
-      expect(described_class.new('0123', '00100005788-1').verification_digit).to eq('1')
-      expect(described_class.new('2088', '00300009998-3').verification_digit).to eq('3')
-    end
-  end
-
   describe '#valid?' do
     context 'when account length is valid' do
       it 'returns true if verification digit is valid' do

@@ -1,14 +1,6 @@
 require 'spec_helper'
 
 describe BanktoolsBR::Banks::HSBC::Account do
-  describe '#verification_digit' do
-    it 'returns extracted verification digit from account number' do
-      expect(described_class.new('0007', '853838-6').verification_digit).to eq('6')
-      expect(described_class.new('1996', '498991-4').verification_digit).to eq('4')
-      expect(described_class.new('1913', '1040120').verification_digit).to eq('0')
-    end
-  end
-
   describe '#valid?' do
     context 'when account length is valid' do
       it 'returns true if verification digit is valid' do

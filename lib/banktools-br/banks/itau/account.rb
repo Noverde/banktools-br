@@ -1,38 +1,16 @@
 module BanktoolsBR
   module Banks
     module Itau
-      class Account
-        include Utilities
-
-        BANK_ACCOUNT_LENGTH = 6
-
-        def initialize(bank_agency, bank_account)
-          @bank_agency = bank_agency
-          @bank_account = bank_account
-        end
-
-        def verification_digit
-          extract_digit(@bank_account)
-        end
-
-        def valid?
-          (sanitize_numbers(@bank_account).length == BANK_ACCOUNT_LENGTH) &&
-            (verification_digit == correct_verification_digit)
-        end
-
+      class Account < BanktoolsBR::Banks::Account
         private
 
-        def bank_account_without_digit
-          extract_number_without_digit(@bank_account, BANK_ACCOUNT_LENGTH)
-        end
-
-        def full_account_number
-          sanitize_numbers(@bank_agency) + bank_account_without_digit
+        def bank_account_length
+          6
         end
 
         def correct_verification_digit
-          sum_digit = digit_calculator_sum(full_account_number, [2, 1, 2, 1, 2, 1, 2, 1, 2])
-          digit = digit_calculator_mod(sum_digit, 10)
+          digit_calculator = BanktoolsBR::Banks::DigitCalculator.new(full_account_number, [2, 1, 2, 1, 2, 1, 2, 1, 2])
+          digit = digit_calculator.mod(10, true)
 
           return '0' if digit == 10
 
