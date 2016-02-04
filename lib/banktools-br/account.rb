@@ -16,6 +16,8 @@ module BanktoolsBR
         BanktoolsBR::Banks::Banrisul::Account.new(@bank_agency, @bank_account).valid?
       when '104'
         BanktoolsBR::Banks::CaixaEconomica::Account.new(@bank_agency, @bank_account).valid?
+      when '237'
+        BanktoolsBR::Banks::Bradesco::Account.new(@bank_agency, @bank_account).valid?
       when '341'
         BanktoolsBR::Banks::Itau::Account.new(@bank_agency, @bank_account).valid?
       else
