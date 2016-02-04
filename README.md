@@ -1,4 +1,4 @@
-# Banktools::BR
+# BanktoolsBR
 
 This gem to normalize, validate and prettify brazilian bank account and agencies according to the bank.
 
