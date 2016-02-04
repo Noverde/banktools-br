@@ -19,6 +19,8 @@ module BanktoolsBR
         BanktoolsBR::Banks::Bradesco::Agency.new(@bank_agency).valid?
       when '341'
         BanktoolsBR::Banks::Itau::Agency.new(@bank_agency).valid?
+      when '399'
+        BanktoolsBR::Banks::HSBC::Agency.new(@bank_agency).valid?
       else
         raise BanktoolsBR::UnsupportedBank, "Bank: #{@bank_code} is not supported."
       end
