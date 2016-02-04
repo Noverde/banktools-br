@@ -22,6 +22,8 @@ module BanktoolsBR
         BanktoolsBR::Banks::Itau::Account.new(@bank_agency, @bank_account).valid?
       when '399'
         BanktoolsBR::Banks::HSBC::Account.new(@bank_agency, @bank_account).valid?
+      when '745'
+        BanktoolsBR::Banks::Citybank::Account.new(@bank_agency, @bank_account).valid?
       else
         raise BanktoolsBR::UnsupportedBank, "Bank: #{@bank_code} is not supported."
       end
