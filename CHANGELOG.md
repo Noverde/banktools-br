@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.1.2
+
+* Expose normalize method using main account class.
+
 ## 0.1.1
 
 * Add method to return bank account normalized
