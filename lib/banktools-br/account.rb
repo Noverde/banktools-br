@@ -17,26 +17,7 @@ module BanktoolsBR
     # @return [String] account number normalized
     # @raise [BanktoolsBR::UnsupportedBank] if bank code is not supported.
     def normalize
-      case @bank_code
-      when '001'
-        BanktoolsBR::Banks::BB::Account.new(@bank_agency, @bank_account).normalize
-      when '033'
-        BanktoolsBR::Banks::Santander::Account.new(@bank_agency, @bank_account).normalize
-      when '041'
-        BanktoolsBR::Banks::Banrisul::Account.new(@bank_agency, @bank_account).normalize
-      when '104'
-        BanktoolsBR::Banks::CaixaEconomica::Account.new(@bank_agency, @bank_account).normalize
-      when '237'
-        BanktoolsBR::Banks::Bradesco::Account.new(@bank_agency, @bank_account).normalize
-      when '341'
-        BanktoolsBR::Banks::Itau::Account.new(@bank_agency, @bank_account).normalize
-      when '399'
-        BanktoolsBR::Banks::HSBC::Account.new(@bank_agency, @bank_account).normalize
-      when '745'
-        BanktoolsBR::Banks::Citybank::Account.new(@bank_agency, @bank_account).normalize
-      else
-        raise BanktoolsBR::UnsupportedBank, "Bank: #{@bank_code} is not supported."
-      end
+      bank_account.normalize
     end
 
     # Validates account verification digit based on bank code.
@@ -44,23 +25,31 @@ module BanktoolsBR
     # @return [true, false]
     # @raise [BanktoolsBR::UnsupportedBank] if bank code is not supported.
     def valid?
+      bank_account.valid?
+    end
+
+    # Returns an bank account instance according to the given bank_code
+    #
+    # @return Banks::SomeBank::Account
+    # @raise [BanktoolsBR::UnsupportedBank] if bank code is not supported.
+    def bank_account
       case @bank_code
       when '001'
-        BanktoolsBR::Banks::BB::Account.new(@bank_agency, @bank_account).valid?
+        BanktoolsBR::Banks::BB::Account.new(@bank_agency, @bank_account)
       when '033'
-        BanktoolsBR::Banks::Santander::Account.new(@bank_agency, @bank_account).valid?
+        BanktoolsBR::Banks::Santander::Account.new(@bank_agency, @bank_account)
       when '041'
-        BanktoolsBR::Banks::Banrisul::Account.new(@bank_agency, @bank_account).valid?
+        BanktoolsBR::Banks::Banrisul::Account.new(@bank_agency, @bank_account)
       when '104'
-        BanktoolsBR::Banks::CaixaEconomica::Account.new(@bank_agency, @bank_account).valid?
+        BanktoolsBR::Banks::CaixaEconomica::Account.new(@bank_agency, @bank_account)
       when '237'
-        BanktoolsBR::Banks::Bradesco::Account.new(@bank_agency, @bank_account).valid?
+        BanktoolsBR::Banks::Bradesco::Account.new(@bank_agency, @bank_account)
       when '341'
-        BanktoolsBR::Banks::Itau::Account.new(@bank_agency, @bank_account).valid?
+        BanktoolsBR::Banks::Itau::Account.new(@bank_agency, @bank_account)
       when '399'
-        BanktoolsBR::Banks::HSBC::Account.new(@bank_agency, @bank_account).valid?
+        BanktoolsBR::Banks::HSBC::Account.new(@bank_agency, @bank_account)
       when '745'
-        BanktoolsBR::Banks::Citybank::Account.new(@bank_agency, @bank_account).valid?
+        BanktoolsBR::Banks::Citybank::Account.new(@bank_agency, @bank_account)
       else
         raise BanktoolsBR::UnsupportedBank, "Bank: #{@bank_code} is not supported."
       end
