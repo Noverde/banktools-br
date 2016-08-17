@@ -132,4 +132,62 @@ describe BanktoolsBR::Account do
       expect { BanktoolsBR::Account.new('999', '0345', '013244-5').valid? }.to raise_error(BanktoolsBR::UnsupportedBank)
     end
   end
+
+  describe '#bank_account' do
+    let(:agency) { '0393' }
+    let(:account) { '123456' }
+    let(:bank_account) { double }
+
+    it 'returns itau account instance' do
+      expect(BanktoolsBR::Account.new('341', agency, account).bank_account).to be_instance_of(
+        BanktoolsBR::Banks::Itau::Account
+      )
+    end
+
+    it 'returns bb account instance' do
+      expect(BanktoolsBR::Account.new('001', agency, account).bank_account).to be_instance_of(
+        BanktoolsBR::Banks::BB::Account
+      )
+    end
+
+    it 'returns caixa economica account instance' do
+      expect(BanktoolsBR::Account.new('104', agency, account).bank_account).to be_instance_of(
+        BanktoolsBR::Banks::CaixaEconomica::Account
+      )
+    end
+
+    it 'returns santander account instance' do
+      expect(BanktoolsBR::Account.new('033', agency, account).bank_account).to be_instance_of(
+        BanktoolsBR::Banks::Santander::Account
+      )
+    end
+
+    it 'returns banrisul account instance' do
+      expect(BanktoolsBR::Account.new('041', agency, account).bank_account).to be_instance_of(
+        BanktoolsBR::Banks::Banrisul::Account
+      )
+    end
+
+    it 'returns bradesco account instance' do
+      expect(BanktoolsBR::Account.new('237', agency, account).bank_account).to be_instance_of(
+        BanktoolsBR::Banks::Bradesco::Account
+      )
+    end
+
+    it 'returns hsbc account instance' do
+      expect(BanktoolsBR::Account.new('399', agency, account).bank_account).to be_instance_of(
+        BanktoolsBR::Banks::HSBC::Account
+      )
+    end
+
+    it 'returns citybank account instance' do
+      expect(BanktoolsBR::Account.new('745', agency, account).bank_account).to be_instance_of(
+        BanktoolsBR::Banks::Citybank::Account
+      )
+    end
+
+    it 'raises an exception if bank code does not match with any bank code supported' do
+      expect { BanktoolsBR::Account.new('999', '0345', '013244-5').bank_account }.to raise_error(BanktoolsBR::UnsupportedBank)
+    end
+  end
 end
