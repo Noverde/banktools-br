@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.1.3
+
+* Expose bank account instances by the given bank code.
+
 ## 0.1.2
 
 * Expose normalize method using main account class.
