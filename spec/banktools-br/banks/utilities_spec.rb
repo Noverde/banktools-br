@@ -28,11 +28,12 @@ describe BanktoolsBR::Banks::Utilities do
 
   describe '#extract_number_without_digit' do
     it 'returns the number from account number without digit' do
-      expect(FakeBank.new.extract_number_without_digit('02939-1', 6)).to eq('02939')
-      expect(FakeBank.new.extract_number_without_digit('123452', 6)).to eq('12345')
-      expect(FakeBank.new.extract_number_without_digit('0293-1', 5)).to eq('0293')
-      expect(FakeBank.new.extract_number_without_digit('9877-5', 5)).to eq('9877')
-      expect(FakeBank.new.extract_number_without_digit('4456', 4)).to eq('445')
+      expect(FakeBank.new.extract_number_without_digit('02939-1')).to eq('02939')
+      expect(FakeBank.new.extract_number_without_digit('123452')).to eq('12345')
+      expect(FakeBank.new.extract_number_without_digit('0293-1')).to eq('0293')
+      expect(FakeBank.new.extract_number_without_digit('9877-5')).to eq('9877')
+      expect(FakeBank.new.extract_number_without_digit('4456')).to eq('445')
+      expect(FakeBank.new.extract_number_without_digit('16807-6')).to eq('16807')
     end
   end
 end

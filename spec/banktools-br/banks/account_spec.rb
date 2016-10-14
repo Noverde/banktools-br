@@ -22,6 +22,7 @@ describe FakeAccount do
       expect(described_class.new('3589', '1671144-6').bank_account_without_digit).to eq('1671144')
       expect(described_class.new('6695', '1945200-P').bank_account_without_digit).to eq('1945200')
       expect(described_class.new('3295', '04401093').bank_account_without_digit).to eq('0440109')
+      expect(described_class.new('4015', '16807-6').bank_account_without_digit).to eq('16807')
     end
   end
 

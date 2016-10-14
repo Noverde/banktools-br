@@ -20,10 +20,9 @@ module BanktoolsBR
       # Extracts only the number without digit.
       #
       # @param [String] full number with digit
-      # @param [Integer] maximum size of full number
       # @return [String] number without digit
-      def extract_number_without_digit(full_number, maximum_size)
-        sanitize_numbers(full_number).slice(0, maximum_size - 1)
+      def extract_number_without_digit(full_number)
+        sanitize_numbers(full_number).chop
       end
     end
   end
