@@ -14,6 +14,7 @@ describe FakeAccount do
       expect(described_class.new('2644', '167.1144-6').normalize).to eq('1671144-6')
       expect(described_class.new('1222', '194.5200-P').normalize).to eq('1945200-P')
       expect(described_class.new('9974', '04401093').normalize).to eq('0440109-3')
+      expect(described_class.new('1255', '123').normalize).to eq('0000012-3')
     end
   end
 
