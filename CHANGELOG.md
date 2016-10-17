@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.1.5
+
+* Fix normalize bank acount length
+
 ## 0.1.4
 
 * Fix account_without_digit method
