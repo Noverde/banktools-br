@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.1.4
+
+* Fix account_without_digit method
+
 ## 0.1.3
 
 * Expose bank account instances by the given bank code.
