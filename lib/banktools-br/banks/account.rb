@@ -21,7 +21,7 @@ module BanktoolsBR
       def normalize
         account_number = sanitize_numbers(bank_account).rjust(bank_account_length, '0')
 
-        [extract_number_without_digit(account_number, bank_account_length), extract_digit(bank_account)].join('-')
+        [bank_account_without_digit, extract_digit(bank_account)].join('-')
       end
 
       # Validates account number based on their length and verification digit.
@@ -36,7 +36,7 @@ module BanktoolsBR
       #
       # @return [String]
       def bank_account_without_digit
-        extract_number_without_digit(bank_account, bank_account_length)
+        extract_number_without_digit(bank_account)
       end
 
       # Full account number (bank_agency + bank_account_without_digit)
