@@ -2,6 +2,21 @@ module BanktoolsBR
   module Banks
     module Bradesco
       class Account < BanktoolsBR::Banks::Account
+      # Bradesco account validation
+      #
+      # @return [true, false]
+      def valid?
+          if sanitize_numbers(bank_account).length == bank_account_length
+            if verification_digit == '0'
+              return verification_digit == correct_verification_digit || correct_verification_digit == 'P'
+            end
+
+            return verification_digit == correct_verification_digit
+          end
+
+          false
+        end
+
         private
 
         # Sets the bank account length.
