@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.1.6
+
+* Santander update for "correct_verification_digit"
+* Bradesco update for "valid?"
+
 ## 0.1.5
 
 * Fix normalize bank acount length
